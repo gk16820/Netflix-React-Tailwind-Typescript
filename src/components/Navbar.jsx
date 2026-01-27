@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Search, Bell, User } from 'lucide-react';
+import { Search, Bell } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
@@ -15,10 +15,9 @@ const Navbar: React.FC = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const handleSearch = (e: React.FormEvent) => {
+    const handleSearch = (e) => {
         e.preventDefault();
         if (searchQuery.trim()) {
-            // Logic for search navigation if needed
             console.log('Searching for:', searchQuery);
         }
     };

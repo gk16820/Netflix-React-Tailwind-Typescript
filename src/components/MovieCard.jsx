@@ -1,13 +1,7 @@
 import React from 'react';
-import { Movie, IMG_BASE_URL } from '../services/tmdb';
+import { IMG_BASE_URL } from '../services/tmdb';
 
-interface MovieCardProps {
-    movie: Movie;
-    isLargeRow?: boolean;
-    onClick: (movie: Movie) => void;
-}
-
-const MovieCard: React.FC<MovieCardProps> = ({ movie, isLargeRow, onClick }) => {
+const MovieCard = ({ movie, isLargeRow, onClick }) => {
     const imagePath = isLargeRow ? movie.poster_path : movie.backdrop_path || movie.poster_path;
 
     if (!imagePath) return null;

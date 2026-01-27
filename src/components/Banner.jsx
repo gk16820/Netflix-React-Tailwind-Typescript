@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Movie, fetchData, IMG_BASE_URL } from '../services/tmdb';
+import { fetchData, IMG_BASE_URL } from '../services/tmdb';
 import { Play, Info } from 'lucide-react';
 
-interface BannerProps {
-    fetchUrl: string;
-    onMovieClick: (movie: Movie) => void;
-}
-
-const Banner: React.FC<BannerProps> = ({ fetchUrl, onMovieClick }) => {
-    const [movie, setMovie] = useState<Movie | null>(null);
+const Banner = ({ fetchUrl, onMovieClick }) => {
+    const [movie, setMovie] = useState(null);
 
     useEffect(() => {
         async function loadData() {

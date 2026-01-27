@@ -1,18 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Movie, fetchData } from '../services/tmdb';
+import { fetchData } from '../services/tmdb';
 import MovieCard from './MovieCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface RowProps {
-    title: string;
-    fetchUrl: string;
-    isLargeRow?: boolean;
-    onMovieClick: (movie: Movie) => void;
-}
-
-const Row: React.FC<RowProps> = ({ title, fetchUrl, isLargeRow, onMovieClick }) => {
-    const [movies, setMovies] = useState<Movie[]>([]);
-    const rowRef = useRef<HTMLDivElement>(null);
+const Row = ({ title, fetchUrl, isLargeRow, onMovieClick }) => {
+    const [movies, setMovies] = useState([]);
+    const rowRef = useRef(null);
 
     useEffect(() => {
         async function loadData() {
@@ -22,7 +15,7 @@ const Row: React.FC<RowProps> = ({ title, fetchUrl, isLargeRow, onMovieClick }) 
         loadData();
     }, [fetchUrl]);
 
-    const scroll = (direction: 'left' | 'right') => {
+    const scroll = (direction) => {
         if (rowRef.current) {
             const { scrollLeft, clientWidth } = rowRef.current;
             const scrollTo = direction === 'left' ? scrollLeft - clientWidth / 2 : scrollLeft + clientWidth / 2;

@@ -1,14 +1,8 @@
 import React from 'react';
-import { Movie, IMG_BASE_URL } from '../services/tmdb';
+import { IMG_BASE_URL } from '../services/tmdb';
 import { X, Play, Plus, ThumbsUp } from 'lucide-react';
 
-interface MovieModalProps {
-    movie: Movie | null;
-    isOpen: boolean;
-    onClose: () => void;
-}
-
-const MovieModal: React.FC<MovieModalProps> = ({ movie, isOpen, onClose }) => {
+const MovieModal = ({ movie, isOpen, onClose }) => {
     if (!isOpen || !movie) return null;
 
     return (

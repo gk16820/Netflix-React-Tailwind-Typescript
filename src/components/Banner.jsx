@@ -26,11 +26,11 @@ const Banner = ({ fetchUrl, onMovieClick }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
 
             <div className="absolute top-[30%] md:top-[25%] left-4 md:left-12 max-w-xl space-y-4 z-10 transition-transform duration-700">
-                <div className="bg-black/40 backdrop-blur-sm p-6 rounded-xl shadow-2xl">
+                <div className="drop-shadow-lg">
                     <h1 className="text-4xl md:text-6xl font-black drop-shadow-lg pb-4">
                         {movie.title || movie.name || movie.original_name}
                     </h1>
-                    <p className="text-white text-base md:text-lg font-medium drop-shadow-md line-clamp-3 max-w-lg md:max-w-xl">
+                    <p className="bg-black/40 backdrop-blur-sm-p-7 rounded-xl shadow-2xl text-white text-base md:text-lg font-medium drop-shadow-md line-clamp-3 max-w-lg md:max-w-xl">
                         {movie.overview}
                     </p>
                 </div>

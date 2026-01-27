@@ -1,9 +1,34 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { IMG_BASE_URL } from '../services/tmdb';
 import { X, Play, Plus, ThumbsUp } from 'lucide-react';
 
 const MovieModal = ({ movie, isOpen, onClose }) => {
+    const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
+
     if (!isOpen || !movie) return null;
+
+    const handlePlayClick = () => {
+        if (!isAuthenticated) {
+            alert("need to login");
+            onClose();
+            navigate('/login');
+        } else {
+            alert("Cannot play at the moment");
+        }
+    };
+
+    const handleActionClick = () => {
+        if (!isAuthenticated) {
+            alert("need to login");
+            onClose();
+            navigate('/login');
+        } else {
+            alert("cannot add to wishllist or watchlist at the momemt");
+        }
+    };
 
     return (
         <div className="fixed inset-0 z-[60] flex items-center justify-center px-4 py-6 md:p-8">
@@ -33,14 +58,17 @@ const MovieModal = ({ movie, isOpen, onClose }) => {
                             {movie.title || movie.name}
                         </h2>
                         <div className="flex items-center gap-4">
-                            <button className="bg-white text-black px-8 py-2 rounded font-bold hover:bg-opacity-90 transition flex items-center gap-2">
+                            <button
+                                onClick={handlePlayClick}
+                                className="bg-white text-black px-8 py-2 rounded font-bold hover:bg-opacity-90 transition flex items-center gap-2"
+                            >
                                 <Play className="w-5 h-5 fill-current" />
                                 Play
                             </button>
-                            <button className="border border-gray-400 text-white p-2 rounded-full hover:border-white transition flex items-center justify-center">
-                                <Plus className="w-6 h-6" />
+                            <button onClick={handleActionClick} className="bg-[#6d6d6eb3] text-white p-2 rounded-full border-2 border-gray-400 hover:border-white transition">
+                                <Plus className="w-5 h-5" />
                             </button>
-                            <button className="border border-gray-400 text-white p-2 rounded-full hover:border-white transition flex items-center justify-center">
+                            <button onClick={handleActionClick} className="bg-[#6d6d6eb3] text-white p-2 rounded-full border-2 border-gray-400 hover:border-white transition">
                                 <ThumbsUp className="w-5 h-5" />
                             </button>
                         </div>

@@ -7,9 +7,16 @@ import MovieModal from './components/MovieModal.jsx';
 import Search from './pages/Search';
 import { requests } from './services/tmdb';
 import './App.css';
+import { AuthProvider } from './context/AuthContext';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+
+import Footer from './components/Footer';
 
 const Home = ({ onMovieClick }) => (
   <>
+    <Navbar />
     <Banner fetchUrl={requests.fetchTrending} onMovieClick={onMovieClick} />
     <main className="relative z-20 -mt-24 md:-mt-32 pb-10 space-y-2">
       <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginals} isLargeRow onMovieClick={onMovieClick} />
@@ -21,11 +28,13 @@ const Home = ({ onMovieClick }) => (
       <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} onMovieClick={onMovieClick} />
       <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} onMovieClick={onMovieClick} />
     </main>
+    <Footer />
   </>
 );
 
 const TVShows = ({ onMovieClick }) => (
   <>
+    <Navbar />
     <Banner fetchUrl={requests.fetchNetflixOriginals} onMovieClick={onMovieClick} />
     <main className="relative z-20 -mt-24 md:-mt-32 pb-10">
       <Row title="Trending TV Shows" fetchUrl={requests.fetchTVTrending} isLargeRow onMovieClick={onMovieClick} />
@@ -34,11 +43,13 @@ const TVShows = ({ onMovieClick }) => (
       <Row title="Crime TV Shows" fetchUrl={requests.fetchTVCrime} onMovieClick={onMovieClick} />
       <Row title="Animation" fetchUrl={requests.fetchTVAnimation} onMovieClick={onMovieClick} />
     </main>
+    <Footer />
   </>
 );
 
 const Movies = ({ onMovieClick }) => (
   <>
+    <Navbar />
     <Banner fetchUrl={requests.fetchActionMovies} onMovieClick={onMovieClick} />
     <main className="relative z-20 -mt-24 md:-mt-32 pb-10">
       <Row title="Blockbuster Movies" fetchUrl={requests.fetchActionMovies} isLargeRow onMovieClick={onMovieClick} />
@@ -46,30 +57,37 @@ const Movies = ({ onMovieClick }) => (
       <Row title="Sci-Fi & Fantasy" fetchUrl={requests.fetchSciFi} onMovieClick={onMovieClick} />
       <Row title="Suspenseful Thrillers" fetchUrl={requests.fetchThriller} onMovieClick={onMovieClick} />
     </main>
+    <Footer />
   </>
 );
 
 const Latest = ({ onMovieClick }) => (
   <>
+    <Navbar />
     <Banner fetchUrl={requests.fetchUpcoming} onMovieClick={onMovieClick} />
     <main className="relative z-20 -mt-24 md:-mt-32 pb-10">
       <Row title="Coming Soon" fetchUrl={requests.fetchUpcoming} isLargeRow onMovieClick={onMovieClick} />
       <Row title="New on Netflix" fetchUrl={requests.fetchNowPlaying} onMovieClick={onMovieClick} />
       <Row title="Airing Today (TV)" fetchUrl={requests.fetchTVAiringToday} onMovieClick={onMovieClick} />
     </main>
+    <Footer />
   </>
 );
 
 const MyList = () => (
-  <main className="pt-24 min-h-screen">
-    <div className="h-[60vh] flex flex-col items-center justify-center text-center text-gray-400 px-4">
-      <svg className="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-      </svg>
-      <h2 className="text-3xl text-white font-bold mb-2">Your List is Empty</h2>
-      <p className="max-w-md">Films and TV shows that you add to your list will appear here.</p>
-    </div>
-  </main>
+  <>
+    <Navbar />
+    <main className="pt-24 min-h-screen">
+      <div className="h-[60vh] flex flex-col items-center justify-center text-center text-gray-400 px-4">
+        <svg className="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+        </svg>
+        <h2 className="text-3xl text-white font-bold mb-2">Your List is Empty</h2>
+        <p className="max-w-md">Films and TV shows that you add to your list will appear here.</p>
+      </div>
+    </main>
+    <Footer />
+  </>
 );
 
 function App() {
@@ -82,52 +100,29 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="bg-[#141414] min-h-screen font-sans text-white antialiased overflow-x-hidden">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home onMovieClick={handleMovieClick} />} />
-          <Route path="/tv" element={<TVShows onMovieClick={handleMovieClick} />} />
-          <Route path="/movies" element={<Movies onMovieClick={handleMovieClick} />} />
-          <Route path="/latest" element={<Latest onMovieClick={handleMovieClick} />} />
-          <Route path="/search" element={<Search onMovieClick={handleMovieClick} />} />
-          <Route path="/mylist" element={<MyList />} />
-        </Routes>
+    <AuthProvider>
+      <Router>
+        <div className="bg-[#141414] min-h-screen font-sans text-white antialiased overflow-x-hidden">
+          <Routes>
+            <Route path="/" element={<Home onMovieClick={handleMovieClick} />} />
+            <Route path="/tv" element={<TVShows onMovieClick={handleMovieClick} />} />
+            <Route path="/movies" element={<Movies onMovieClick={handleMovieClick} />} />
+            <Route path="/latest" element={<Latest onMovieClick={handleMovieClick} />} />
+            <Route path="/search" element={<Search onMovieClick={handleMovieClick} />} />
+            <Route path="/mylist" element={<MyList />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
 
-        <MovieModal
-          movie={selectedMovie}
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
-
-        <footer className="max-w-[1000px] mx-auto text-gray-400 text-sm py-20 px-4 border-t border-gray-800 mt-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-4">
-            <ul className="space-y-2">
-              <li className="hover:underline cursor-pointer">Audio and Subtitles</li>
-              <li className="hover:underline cursor-pointer">Media Center</li>
-              <li className="hover:underline cursor-pointer">Privacy</li>
-              <li className="hover:underline cursor-pointer">Contact Us</li>
-            </ul>
-            <ul className="space-y-2">
-              <li className="hover:underline cursor-pointer">Audio Description</li>
-              <li className="hover:underline cursor-pointer">Investor Relations</li>
-              <li className="hover:underline cursor-pointer">Legal Notices</li>
-            </ul>
-            <ul className="space-y-2">
-              <li className="hover:underline cursor-pointer">Help Center</li>
-              <li className="hover:underline cursor-pointer">Jobs</li>
-              <li className="hover:underline cursor-pointer">Cookie Preferences</li>
-            </ul>
-            <ul className="space-y-2">
-              <li className="hover:underline cursor-pointer">Gift Cards</li>
-              <li className="hover:underline cursor-pointer">Terms of Use</li>
-              <li className="hover:underline cursor-pointer">Corporate Information</li>
-            </ul>
-          </div>
-          <div className="text-[11px]">&copy; 2026 Netflix Clone.</div>
-        </footer>
-      </div>
-    </Router>
+          <MovieModal
+            movie={selectedMovie}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

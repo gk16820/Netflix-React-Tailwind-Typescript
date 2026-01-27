@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { fetchData, IMG_BASE_URL } from '../services/tmdb';
 import { Play, Info } from 'lucide-react';
 
 const Banner = ({ fetchUrl, onMovieClick }) => {
     const [movie, setMovie] = useState(null);
+    const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
 
     useEffect(() => {
         async function loadData() {
@@ -16,6 +20,16 @@ const Banner = ({ fetchUrl, onMovieClick }) => {
     }, [fetchUrl]);
 
     if (!movie) return <div className="h-[56.25vw] min-h-[85vh] bg-[#141414]" />;
+
+    const handlePlayClick = () => {
+        if (!isAuthenticated) {
+            alert("need to login");
+            navigate('/login');
+        } else {
+            alert("Cannot play at the moment");
+            onMovieClick(movie);
+        }
+    };
 
     return (
         <header
@@ -37,7 +51,7 @@ const Banner = ({ fetchUrl, onMovieClick }) => {
 
                 <div className="flex items-center gap-3 pt-4">
                     <button
-                        onClick={() => onMovieClick(movie)}
+                        onClick={handlePlayClick}
                         className="bg-white text-black px-6 md:px-8 py-2 md:py-3 rounded hover:bg-opacity-80 transition flex items-center gap-2 font-bold text-lg"
                     >
                         <Play className="w-6 h-6 fill-current" />

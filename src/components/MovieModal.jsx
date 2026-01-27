@@ -7,13 +7,11 @@ const MovieModal = ({ movie, isOpen, onClose }) => {
 
     return (
         <div className="fixed inset-0 z-[60] flex items-center justify-center px-4 py-6 md:p-8">
-            {/* Backdrop */}
             <div
                 className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
                 onClick={onClose}
             />
 
-            {/* Content */}
             <div className="relative bg-[#181818] rounded-lg text-left overflow-hidden shadow-xl transform transition-all max-w-4xl w-full z-10 max-h-full overflow-y-auto no-scrollbar">
                 <button
                     onClick={onClose}

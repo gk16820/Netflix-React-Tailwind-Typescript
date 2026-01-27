@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Banner from './components/Banner';
-import Row from './components/Row';
-import MovieModal from './components/MovieModal';
+import Navbar from './components/Navbar.jsx';
+import Banner from './components/Banner.jsx';
+import Row from './components/Row.jsx';
+import MovieModal from './components/MovieModal.jsx';
+import Search from './pages/Search';
 import { requests } from './services/tmdb';
 import './App.css';
 
@@ -89,6 +90,7 @@ function App() {
           <Route path="/tv" element={<TVShows onMovieClick={handleMovieClick} />} />
           <Route path="/movies" element={<Movies onMovieClick={handleMovieClick} />} />
           <Route path="/latest" element={<Latest onMovieClick={handleMovieClick} />} />
+          <Route path="/search" element={<Search onMovieClick={handleMovieClick} />} />
           <Route path="/mylist" element={<MyList />} />
         </Routes>
 

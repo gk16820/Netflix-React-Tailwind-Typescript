@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar Hiding */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Base Styles */
+body {
+    background-color: #141414;
+    color: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Card Hover Effects */
+.movie-card {
+    transition: transform 0.3s ease-in-out, z-index 0s 0.1s;
+    /* Delay z-index change so it doesn't clip immediately */
+}
+
+.movie-card:hover {
+    transform: scale(1.1);
+    /* Slightly reduced scale for better UX */
+    z-index: 50;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Gradient Overlays */
+.hero-gradient {
+    background: linear-gradient(77deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 85%);
+}
+
+
+.bottom-gradient {
+    background: linear-gradient(180deg, transparent 0%, rgba(20, 20, 20, 1) 100%);
+}
+
+/* Modal Open State */
+body.modal-open {
+    overflow: hidden;
+    padding-right: 15px;
+    /* Prevent layout shift when scrollbar disappears */
+}
+
+/* Slider Buttons */
+.slider-btn {
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.row:hover .slider-btn {
+    opacity: 1;
+}
+
+.slider-btn:hover {
+    background-color: rgba(20, 20, 20, 0.5);
+    transform: scale(1.1);
+}

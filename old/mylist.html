@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix - Watch TV Shows Online, Watch Movies Online</title>
+    <link rel="icon" type="image/png" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        netflix: {
+                            red: '#E50914',
+                            dark: '#141414',
+                            light: '#e5e5e5',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <!-- Google Fonts for a more premium look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-[#141414] font-sans text-white antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed top-0 w-full z-50 transition-colors duration-500 px-4 md:px-12 py-4 flex items-center justify-between bg-gradient-to-b from-black/70 to-transparent">
+        <div class="flex items-center gap-8">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+                class="w-24 md:w-32 cursor-pointer" alt="Netflix">
+            <ul class="hidden md:flex items-center gap-6 text-sm text-gray-200">
+                <li class="font-medium hover:text-white transition cursor-pointer"><a href="index.html">Home</a></li>
+                <li class="font-normal hover:text-white transition cursor-pointer"><a href="tv.html">TV Shows</a></li>
+                <li class="font-normal hover:text-white transition cursor-pointer"><a href="movies.html">Movies</a></li>
+                <li class="font-normal hover:text-white transition cursor-pointer"><a href="latest.html">New &
+                        Popular</a></li>
+                <li class="font-normal hover:text-white transition cursor-pointer"><a href="mylist.html">My List</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="flex items-center gap-6 text-sm font-medium text-white">
+            <div id="search-container"
+                class="flex items-center gap-2 border border-transparent focus-within:border-white bg-transparent p-1 transition-all duration-300 group overflow-hidden">
+                <button id="search-btn" class="hover:text-gray-300 transition shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                <input type="text" id="search-input" placeholder="Titles, people, genres"
+                    class="bg-transparent border-none outline-none text-white text-sm w-0 group-focus-within:w-48 md:group-focus-within:w-64 transition-all duration-300 placeholder:text-gray-500 opacity-0 group-focus-within:opacity-100">
+            </div>
+            <div class="hidden md:block hover:text-gray-300 transition cursor-pointer">Children</div>
+            <button class="hover:text-gray-300 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+            </button>
+            <div class="flex items-center gap-2 cursor-pointer group relative">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+                    class="w-8 h-8 rounded" alt="Profile">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+
+    <main class="relative z-20 pt-24 pb-10 space-y-10 pl-4 md:pl-12 overflow-hidden">
+        <div class="h-[60vh] flex flex-col items-center justify-center text-center text-gray-400">
+            <svg class="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+            </svg>
+            <h2 class="text-3xl text-white font-bold mb-2">Your List is Empty</h2>
+            <p class="max-w-md">Films and TV shows that you add to your list will appear here.</p>
+        </div>
+    </main>
+
+    <footer class="max-w-[1000px] mx-auto text-gray-400 text-sm py-20 px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-4">
+            <ul class="space-y-2">
+                <li class="hover:underline cursor-pointer">Audio and Subtitles</li>
+                <li class="hover:underline cursor-pointer">Media Center</li>
+                <li class="hover:underline cursor-pointer">Privacy</li>
+                <div class="mb-4 text-[#737373]">contact@example.com</div>
+                <li class="hover:underline cursor-pointer">Contact Us</li>
+            </ul>
+            <ul class="space-y-2">
+                <li class="hover:underline cursor-pointer">Audio Description</li>
+                <li class="hover:underline cursor-pointer">Investor Relations</li>
+                <li class="hover:underline cursor-pointer">Legal Notices</li>
+            </ul>
+            <ul class="space-y-2">
+                <li class="hover:underline cursor-pointer">Help Center</li>
+                <li class="hover:underline cursor-pointer">Jobs</li>
+                <li class="hover:underline cursor-pointer">Cookie Preferences</li>
+            </ul>
+            <ul class="space-y-2">
+                <li class="hover:underline cursor-pointer">Gift Cards</li>
+                <li class="hover:underline cursor-pointer">Terms of Use</li>
+                <li class="hover:underline cursor-pointer">Corporate Information</li>
+            </ul>
+        </div>
+
+        <div class="text-[11px]">&copy; 2026 Netflix, Inc.</div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

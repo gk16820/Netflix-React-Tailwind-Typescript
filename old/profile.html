@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix - Profile</title>
+    <link rel="icon" type="image/png" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        netflix: {
+                            red: '#E50914',
+                            dark: '#141414',
+                            light: '#e5e5e5',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-[#141414] font-sans text-white antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed top-0 w-full z-50 transition-colors duration-500 px-4 md:px-12 py-4 flex items-center justify-between bg-black">
+        <div class="flex items-center gap-8">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+                class="w-24 md:w-32 cursor-pointer" alt="Netflix">
+            <ul class="hidden md:flex items-center gap-6 text-sm text-gray-200">
+                <li class="font-normal hover:text-white transition cursor-pointer"><a href="index.html">Home</a></li>
+                <li class="font-normal hover:text-white transition cursor-pointer"><a href="tv.html">TV Shows</a></li>
+                <li class="font-normal hover:text-white transition cursor-pointer"><a href="movies.html">Movies</a></li>
+                <li class="font-normal hover:text-white transition cursor-pointer"><a href="latest.html">New &
+                        Popular</a></li>
+                <li class="font-normal hover:text-white transition cursor-pointer"><a href="mylist.html">My List</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="flex items-center gap-6 text-sm font-medium text-white">
+            <button class="hover:text-gray-300 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+            <div class="hidden md:block hover:text-gray-300 transition cursor-pointer">Children</div>
+            <button class="hover:text-gray-300 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+            </button>
+            <div class="flex items-center gap-2 cursor-pointer group relative">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+                    class="w-8 h-8 rounded" alt="Profile">
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-28 px-4 md:px-12 max-w-6xl mx-auto min-h-screen">
+        <h1 class="text-4xl font-bold mb-8 fade-in">Profile & Settings</h1>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Left Column: Navigation -->
+            <div class="md:col-span-1 space-y-4">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded bg-gray-700 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-bold text-gray-300">Guest</div>
+                        <div class="text-xs text-gray-500">Not Logged In</div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#181818] p-4 rounded cursor-pointer hover:bg-[#282828] transition border-l-4 border-red-600 font-semibold text-white">
+                    Settings</div>
+                <!-- <div
+                    class="bg-transparent p-4 rounded cursor-pointer hover:bg-[#282828] transition text-gray-400 hover:text-white">
+                    Details</div> -->
+            </div>
+
+            <!-- Right Column: Content -->
+            <div class="md:col-span-3 bg-[#181818] p-8 rounded fade-in">
+                <h2 class="text-2xl font-bold mb-6">Application Settings</h2>
+
+                <div class="bg-red-900/20 border border-red-900/50 p-4 rounded mb-8 text-red-200 text-sm">
+                    You are currently using the application in Guest Mode. Please log in to enable all settings and save
+                    your preferences.
+                </div>
+
+                <div class="space-y-8 text-gray-300">
+                    <!-- Dark/Light Mode (Disabled) -->
+                    <div class="flex items-center justify-between opacity-50 cursor-not-allowed">
+                        <div>
+                            <div class="font-bold text-white text-lg">Dark Mode</div>
+                            <div class="text-xs text-gray-500">Adjust the appearance of the application</div>
+                        </div>
+                        <div
+                            class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle" id="toggle1"
+                                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-gray-400 border-4 appearance-none cursor-not-allowed"
+                                disabled checked />
+                            <label for="toggle1"
+                                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-700 cursor-not-allowed"></label>
+                        </div>
+                    </div>
+
+                    <!-- Parental Lock (Disabled) -->
+                    <div class="flex items-center justify-between opacity-50 cursor-not-allowed">
+                        <div>
+                            <div class="font-bold text-white text-lg">Parental Lock</div>
+                            <div class="text-xs text-gray-500">Restrict content based on maturity ratings</div>
+                        </div>
+                        <div
+                            class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle" id="toggle2"
+                                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-gray-400 border-4 appearance-none cursor-not-allowed"
+                                disabled />
+                            <label for="toggle2"
+                                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-700 cursor-not-allowed"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-6 border-t border-gray-700">
+                    <a href="login.html"
+                        class="block text-center w-full md:w-auto px-8 bg-white text-black py-2 hover:bg-gray-200 transition font-bold tracking-wide">LOG
+                        IN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="max-w-[1000px] mx-auto text-gray-400 text-sm py-20 px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-4">
+            <ul class="space-y-2">
+                <li class="hover:underline cursor-pointer">Audio and Subtitles</li>
+                <li class="hover:underline cursor-pointer">Media Center</li>
+                <li class="hover:underline cursor-pointer">Privacy</li>
+                <div class="mb-4 text-[#737373]">contact@example.com</div>
+                <li class="hover:underline cursor-pointer">Contact Us</li>
+            </ul>
+            <ul class="space-y-2">
+                <li class="hover:underline cursor-pointer">Audio Description</li>
+                <li class="hover:underline cursor-pointer">Investor Relations</li>
+                <li class="hover:underline cursor-pointer">Legal Notices</li>
+            </ul>
+        </div>
+
+        <div class="text-[11px]">&copy; 2026 Netflix, Inc.</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

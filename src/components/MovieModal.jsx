@@ -1,32 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { IMG_BASE_URL } from '../services/tmdb';
 import { X, Play, Plus, ThumbsUp } from 'lucide-react';
 
 const MovieModal = ({ movie, isOpen, onClose }) => {
+    const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
+
+    useEffect(() => {
+        if (!isOpen) {
+            setMessage('');
+        }
+    }, [isOpen, movie]);
 
     if (!isOpen || !movie) return null;
 
     const handlePlayClick = () => {
         if (!isAuthenticated) {
-            alert("need to login");
-            onClose();
-            navigate('/login');
+            setMessage('need to login to perform this action');
         } else {
-            alert("Cannot play at the moment");
+            setMessage('Cannot play at the moment');
         }
     };
 
-    const handleActionClick = () => {
+    const handleWatchlistClick = () => {
         if (!isAuthenticated) {
-            alert("need to login");
-            onClose();
-            navigate('/login');
+            setMessage('need to login to perform this action');
         } else {
-            alert("cannot add to wishllist or watchlist at the momemt");
+            setMessage('cannot add to watchlist at the moemnt');
+        }
+    };
+
+    const handleLikeClick = () => {
+        if (!isAuthenticated) {
+            setMessage('need to login to perform this action');
+        } else {
+            setMessage('cannot like at the moment');
         }
     };
 
@@ -57,20 +68,38 @@ const MovieModal = ({ movie, isOpen, onClose }) => {
                         <h2 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
                             {movie.title || movie.name}
                         </h2>
-                        <div className="flex items-center gap-4">
-                            <button
-                                onClick={handlePlayClick}
-                                className="bg-white text-black px-8 py-2 rounded font-bold hover:bg-opacity-90 transition flex items-center gap-2"
-                            >
-                                <Play className="w-5 h-5 fill-current" />
-                                Play
-                            </button>
-                            <button onClick={handleActionClick} className="bg-[#6d6d6eb3] text-white p-2 rounded-full border-2 border-gray-400 hover:border-white transition">
-                                <Plus className="w-5 h-5" />
-                            </button>
-                            <button onClick={handleActionClick} className="bg-[#6d6d6eb3] text-white p-2 rounded-full border-2 border-gray-400 hover:border-white transition">
-                                <ThumbsUp className="w-5 h-5" />
-                            </button>
+                        <div className="flex flex-col gap-3">
+                            <div className="flex items-center gap-4">
+                                <button
+                                    onClick={handlePlayClick}
+                                    className="bg-white text-black px-8 py-2 rounded font-bold hover:bg-opacity-90 transition flex items-center gap-2"
+                                >
+                                    <Play className="w-5 h-5 fill-current" />
+                                    Play
+                                </button>
+                                <button
+                                    onClick={handleWatchlistClick}
+                                    className="bg-[#6d6d6eb3] text-white p-2 rounded-full border-2 border-gray-400 hover:border-white transition"
+                                    title="Add to Watchlist"
+                                >
+                                    <Plus className="w-5 h-5" />
+                                </button>
+                                <button
+                                    onClick={handleLikeClick}
+                                    className="bg-[#6d6d6eb3] text-white p-2 rounded-full border-2 border-gray-400 hover:border-white transition"
+                                    title="Like"
+                                >
+                                    <ThumbsUp className="w-5 h-5" />
+                                </button>
+                            </div>
+
+                            {message && (
+                                <div className="animate-in fade-in slide-in-from-top-1 duration-300">
+                                    <p className={`${message.includes('login') ? 'text-blue-400' : 'text-red-500'} text-sm font-medium bg-black/40 py-1 px-3 rounded-full w-fit backdrop-blur-sm border border-white/10`}>
+                                        {message}
+                                    </p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -22,13 +22,7 @@ const Banner = ({ fetchUrl, onMovieClick }) => {
     if (!movie) return <div className="h-[56.25vw] min-h-[85vh] bg-[#141414]" />;
 
     const handlePlayClick = () => {
-        if (!isAuthenticated) {
-            alert("need to login");
-            navigate('/login');
-        } else {
-            alert("Cannot play at the moment");
-            onMovieClick(movie);
-        }
+        onMovieClick(movie);
     };
 
     return (
@@ -40,7 +34,7 @@ const Banner = ({ fetchUrl, onMovieClick }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
 
             <div className="absolute top-[30%] md:top-[25%] left-4 md:left-12 z-10 transition-transform duration-700">
-                <div className="bg-black/30 backdrop-blur-md-25 p-6 rounded-2xl shadow-2xl border border-white/5 max-w-lg md:max-w-xl overflow-hidden space-y-4">
+                                                                                                                                                                                                                                                                        <div className="bg-black/30 backdrop-blur-md-25 p-6 rounded-2xl shadow-2xl border border-white/5 max-w-lg md:max-w-xl overflow-hidden space-y-4">
                     <h1 className="text-4xl md:text-6xl font-black drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] pb-2 text-white/95">
                         {movie.title || movie.name || movie.original_name}
                     </h1>

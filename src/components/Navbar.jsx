@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Search, Bell } from 'lucide-react';
 
+import { useAuth } from '../context/AuthContext';
+
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
+    const { user, isAuthenticated, logout } = useAuth();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,8 +21,13 @@ const Navbar = () => {
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchQuery.trim()) {
-            console.log('Searching for:', searchQuery);
+            navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
         }
+    };
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
     };
 
     const navLinks = [
@@ -70,24 +78,29 @@ const Navbar = () => {
                     />
                 </form>
 
-                <div className="hidden md:block hover:text-gray-300 transition cursor-pointer">Children</div>
                 <button className="hover:text-gray-300 transition">
                     <Bell className="h-6 w-6" />
                 </button>
 
-                <div className="flex items-center gap-2 cursor-pointer group relative">
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-                        className="w-8 h-8 rounded"
-                        alt="Profile"
-                    />
-                    <div className="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                        <div className="w-32 bg-black/90 border border-gray-700 rounded shadow-lg overflow-hidden">
-                            <button className="w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-gray-800 hover:text-white">Profile</button>
-                            <button className="w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-gray-800 hover:text-white">Sign Out</button>
+                {isAuthenticated ? (
+                    <div className="flex items-center gap-2 cursor-pointer group relative">
+                        <span className="text-white hidden md:block">{user?.name || 'User'}</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" className="w-8 h-8 rounded" alt="Profile" />
+                        <div className="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                            <div className="w-32 bg-black/90 border border-gray-700 rounded shadow-lg overflow-hidden">
+                                <button onClick={() => navigate('/profile')} className="w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-gray-800 hover:text-white">Profile</button>
+                                <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-gray-800 hover:text-white">Sign Out</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                ) : (
+                    <div className="flex items-center gap-6">
+                        <div className="hidden md:block hover:text-gray-300 transition cursor-pointer">Guest</div>
+                        <NavLink to="/login" className="bg-[#E50914] text-white px-4 py-1.5 rounded text-sm font-bold hover:bg-[#c11119] transition">
+                            Sign In
+                        </NavLink>
+                    </div>
+                )}
             </div>
         </nav>
     );

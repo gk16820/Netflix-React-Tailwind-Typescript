@@ -37,8 +37,13 @@ code {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .fade-in {
@@ -47,11 +52,11 @@ code {
 
 /* Banner Gradients */
 .hero-gradient {
-  background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
 }
 
 .bottom-gradient {
-  background: linear-gradient(to top, #141414 0%, rgba(20,20,20,0) 100%);
+  background: linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0) 100%);
 }
 
 .modal-open {

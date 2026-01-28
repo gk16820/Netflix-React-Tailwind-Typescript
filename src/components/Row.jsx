@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { fetchData } from '../services/tmdb';
-import MovieCard from './MovieCard';
+import MovieCard from './MovieCard.jsx';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Row = ({ title, fetchUrl, isLargeRow, onMovieClick }) => {
@@ -10,7 +10,7 @@ const Row = ({ title, fetchUrl, isLargeRow, onMovieClick }) => {
     useEffect(() => {
         async function loadData() {
             const data = await fetchData(fetchUrl);
-            setMovies(data);
+            if (data) setMovies(data);
         }
         loadData();
     }, [fetchUrl]);

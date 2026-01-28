@@ -19,7 +19,7 @@ const MovieModal = ({ movie, isOpen, onClose }) => {
 
     const handlePlayClick = () => {
         if (!isAuthenticated) {
-            setMessage('need to login to perform this action');
+            setMessage('Login to perform this action');
         } else {
             setMessage('Cannot play at the moment');
         }
@@ -27,17 +27,17 @@ const MovieModal = ({ movie, isOpen, onClose }) => {
 
     const handleWatchlistClick = () => {
         if (!isAuthenticated) {
-            setMessage('need to login to perform this action');
+            setMessage('Login to perform this action');
         } else {
-            setMessage('cannot add to watchlist at the moemnt');
+            setMessage('Cannot add to watchlist at the moment');
         }
     };
 
     const handleLikeClick = () => {
         if (!isAuthenticated) {
-            setMessage('need to login to perform this action');
+            setMessage('Login to perform this action');
         } else {
-            setMessage('cannot like at the moment');
+            setMessage('Cannot like at the moment');
         }
     };
 
@@ -68,7 +68,7 @@ const MovieModal = ({ movie, isOpen, onClose }) => {
                         <h2 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
                             {movie.title || movie.name}
                         </h2>
-                        <div className="flex flex-col gap-3">
+                        <div className="relative">
                             <div className="flex items-center gap-4">
                                 <button
                                     onClick={handlePlayClick}
@@ -94,8 +94,8 @@ const MovieModal = ({ movie, isOpen, onClose }) => {
                             </div>
 
                             {message && (
-                                <div className="animate-in fade-in slide-in-from-top-1 duration-300">
-                                    <p className={`${message.includes('login') ? 'text-blue-400' : 'text-red-500'} text-sm font-medium bg-black/40 py-1 px-3 rounded-full w-fit backdrop-blur-sm border border-white/10`}>
+                                <div className="absolute top-full left-0 mt-3 animate-in fade-in slide-in-from-top-1 duration-300 z-30">
+                                    <p className={`${message.toLowerCase().includes('login') ? 'text-blue-400' : 'text-red-500'} text-sm font-medium bg-black/60 py-1.5 px-3 rounded-md w-fit backdrop-blur-md border border-white/10 shadow-xl whitespace-nowrap`}>
                                         {message}
                                     </p>
                                 </div>

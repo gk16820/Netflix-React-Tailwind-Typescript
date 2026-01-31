@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { IMG_BASE_URL } from '../services/tmdb';
 import { X, Play, Plus, ThumbsUp } from 'lucide-react';
 
 const MovieModal = ({ movie, isOpen, onClose }) => {
     const [message, setMessage] = useState('');
-    const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
 
     useEffect(() => {

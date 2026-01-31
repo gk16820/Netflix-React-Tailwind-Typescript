@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import { fetchData, IMG_BASE_URL } from '../services/tmdb';
 import { Play, Info } from 'lucide-react';
 
 const Banner = ({ fetchUrl, onMovieClick }) => {
     const [movie, setMovie] = useState(null);
-    const navigate = useNavigate();
-    const { isAuthenticated } = useAuth();
 
     useEffect(() => {
         async function loadData() {

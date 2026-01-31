@@ -75,7 +75,7 @@ const Login: React.FC = () => {
                                 <input type="checkbox" id="remember" className="accent-[#737373] h-4 w-4" />
                                 <label htmlFor="remember">Remember me</label>
                             </div>
-                            <a href="#" className="hover:underline">Need help?</a>
+                            <a href="#help" className="hover:underline">Need help?</a>
                         </div>
                     </form>
 
@@ -84,7 +84,7 @@ const Login: React.FC = () => {
                             New to Netflix? <NavLink to="/signup" className="text-white hover:underline">Sign up now.</NavLink>
                         </div>
                         <div className="text-xs text-[#8c8c8c] leading-tight">
-                            This page is protected by Google reCAPTCHA to ensure you're not a bot. <a href="#" className="text-blue-500 hover:underline">Learn more.</a>
+                            This page is protected by Google reCAPTCHA to ensure you're not a bot. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Learn more.</a>
                         </div>
                     </div>
                 </div>
@@ -95,12 +95,12 @@ const Login: React.FC = () => {
                 <div className="max-w-[1000px] mx-auto px-4 md:px-12 text-[#737373] text-sm">
                     <div className="mb-4">contact@example.com</div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <a href="#" className="hover:underline">FAQ</a>
-                        <a href="#" className="hover:underline">Help Center</a>
-                        <a href="#" className="hover:underline">Terms of Use</a>
-                        <a href="#" className="hover:underline">Privacy</a>
-                        <a href="#" className="hover:underline">Cookie Preferences</a>
-                        <a href="#" className="hover:underline">Corporate Information</a>
+                        <a href="#faq" className="hover:underline">FAQ</a>
+                        <a href="#help-center" className="hover:underline">Help Center</a>
+                        <a href="#terms" className="hover:underline">Terms of Use</a>
+                        <a href="#privacy" className="hover:underline">Privacy</a>
+                        <a href="#cookie-preferences" className="hover:underline">Cookie Preferences</a>
+                        <a href="#corporate-info" className="hover:underline">Corporate Information</a>
                     </div>
                 </div>
             </footer>

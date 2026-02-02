@@ -21,7 +21,6 @@ const Login = () => {
 
     return (
         <div className="relative min-h-screen flex flex-col bg-black">
-            {/* Background Image */}
             <div
                 className="absolute inset-0 z-0 bg-cover bg-center"
                 style={{
@@ -29,14 +28,12 @@ const Login = () => {
                 }}
             />
 
-            {/* Header */}
             <header className="relative z-10 w-full px-4 md:px-12 py-6">
                 <NavLink to="/">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" className="w-24 md:w-36" alt="Netflix" />
                 </NavLink>
             </header>
 
-            {/* Login Form */}
             <div className="relative z-10 flex-grow flex items-center justify-center px-4">
                 <div className="bg-black/75 p-8 md:p-16 rounded-lg w-full max-w-[450px] space-y-8">
                     <h1 className="text-3xl font-bold">Sign In</h1>
@@ -90,7 +87,6 @@ const Login = () => {
                 </div>
             </div>
 
-            {/* Footer */}
             <footer className="relative z-10 bg-black/75 w-full py-8 mt-auto border-t border-gray-800">
                 <div className="max-w-[1000px] mx-auto px-4 md:px-12 text-[#737373] text-sm">
                     <div className="mb-4">contact@example.com</div>

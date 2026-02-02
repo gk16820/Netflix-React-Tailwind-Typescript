@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = (email, password) => {
-        // Mock login - derive name from email if name not available
+
         const namePart = email.split('@')[0];
         const displayName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
         const userData = { email, name: displayName };
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const signup = (name, email, password) => {
-        // Mock signup
+
         const userData = { name, email };
         setUser(userData);
         setIsAuthenticated(true);

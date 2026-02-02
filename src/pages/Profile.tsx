@@ -16,7 +16,6 @@ const Profile: React.FC = () => {
                 <h1 className="text-4xl font-bold mb-8">Profile & Settings</h1>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    {/* Left Column: Navigation */}
                     <div className="md:col-span-1 space-y-4">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-16 h-16 rounded bg-gray-700 flex items-center justify-center">
@@ -33,7 +32,6 @@ const Profile: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Right Column: Content */}
                     <div className="md:col-span-3 bg-[#181818] p-8 rounded">
                         <h2 className="text-2xl font-bold mb-6">Application Settings</h2>
 
@@ -44,7 +42,6 @@ const Profile: React.FC = () => {
                         )}
 
                         <div className="space-y-8 text-gray-300">
-                            {/* Dark/Light Mode (Disabled) */}
                             <div className={`flex items-center justify-between ${!isAuthenticated ? 'opacity-50 cursor-not-allowed' : ''}`}>
                                 <div>
                                     <div className="font-bold text-white text-lg">Dark Mode</div>
@@ -58,7 +55,6 @@ const Profile: React.FC = () => {
                                 </div>
                             </div>
 
-                            {/* Parental Lock (Disabled) */}
                             <div className={`flex items-center justify-between ${!isAuthenticated ? 'opacity-50 cursor-not-allowed' : ''}`}>
                                 <div>
                                     <div className="font-bold text-white text-lg">Parental Lock</div>

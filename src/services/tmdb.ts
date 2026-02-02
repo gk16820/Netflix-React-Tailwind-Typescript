@@ -14,7 +14,7 @@ export const requests = {
     fetchRomanceMovies: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=10749`,
     fetchDocumentaries: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=99`,
     fetchSearch: (query: string) => `${BASE_URL}/search/multi?api_key=${API_KEY}&language=en-US&query=${query}&include_adult=false`,
-    // TV specific
+
     fetchTVTrending: `${BASE_URL}/trending/tv/week?api_key=${API_KEY}&language=en-US`,
     fetchTVAction: `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=10759`,
     fetchTVComedy: `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=35`,
@@ -23,7 +23,7 @@ export const requests = {
     fetchTVMystery: `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=9648`,
     fetchTVAnimation: `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=16`,
     fetchTVAiringToday: `${BASE_URL}/tv/airing_today?api_key=${API_KEY}&language=en-US`,
-    // Movie specific
+
     fetchUpcoming: `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`,
     fetchNowPlaying: `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`,
     fetchSciFi: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=878`,
